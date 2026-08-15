@@ -1,0 +1,34 @@
+const express = require('express');
+const Intasend = require('intasend-node');
+
+const app = express();
+app.use(express.json());
+
+// Initialize IntaSend (Replace with your keys when ready)
+// const intasend = new Intasend(publishableKey, secretKey, false); // false for test, true for live
+
+app.get('/', (req, res) => {
+  res.send('Society Fit M-Pesa Backend is Live!');
+});
+
+// Endpoint for Botpress to trigger payment
+app.post('/pay', async (req, res) => {
+  try {
+    const { phone, amount, userId } = req.body;
+    
+    // Placeholder logic for IntaSend integration response
+    res.status(200).json({
+      success: true,
+      message: 'Payment request initiated',
+      checkout_url: 'https://sandbox.intasend.com/pay/checkout-sample'
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// CRITICAL: Must use process.env.PORT for cloud deployment
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
