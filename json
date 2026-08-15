@@ -1,0 +1,13 @@
+{
+  "name": "societyfit-backend",
+  "version": "1.0.0",
+  "description": "M-Pesa payment bridge for Society Fit",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "intasend-node": "^2.1.0"
+  }
+}
